@@ -15,12 +15,21 @@ public class Village {
 	}
 	
 	private class Marche {
+		//Attributs de la classe Interne
 		private Etal[] etals;
 		
+		//Constructeur de la classe Interne
 		public Marche(int nombreEtals) {
 			etals = new Etal[nombreEtals];
 			for (int i=0 ; i<nombreEtals ; i++)
 				etals[i] = new Etal();
+		}
+		
+		/* Méthode permettant de trouver un étal non occupé dans le tableau etals. 
+		S'il n'y a pas d'étal disponible, la méthode retourne -1. */
+		void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
+			if (indiceEtal>=0 && indiceEtal<etals.length && !etals[indiceEtal].isEtalOccupe())
+				etals[indiceEtal].occuperEtal(vendeur, produit, nbProduit);
 		}
 	}
 	
