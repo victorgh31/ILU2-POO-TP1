@@ -30,14 +30,14 @@ public class Village {
 		
 		/* Méthode permettant de trouver un étal non occupé dans le tableau etals. 
 		 * S'il n'y a pas d'étal disponible, la méthode retourne -1. */
-		void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
+		public void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
 			if (indiceEtal>=0 && indiceEtal<etals.length && !etals[indiceEtal].isEtalOccupe())
 				etals[indiceEtal].occuperEtal(vendeur, produit, nbProduit);
 		}
 		
 		/* Méthode permettant de trouver un étal non occupé dans le tableau etals.
 		 * S'il n'y d'étal disponible, la méthode retourne -1 */
-		int trouverEtalLibre() {
+		public int trouverEtalLibre() {
 			for (int i=0 ; i<etals.length ; i++) {
 				if (!etals[i].isEtalOccupe())
 					return 1;
@@ -54,6 +54,16 @@ public class Village {
 					matchingEtals.add(etal);						
 			}
 			return matchingEtals.toArray(new Etal[0]);
+		}
+		
+		/* Méthode qui retourne l'étal sur lequel s'est installé le vendeur passé
+		 * en paramètre d'entrée ou null s'il n'y en a pas. */
+		public Etal trouverVendeur(Gaulois gaulois) {
+			for (Etal etal : etals) {
+				if (etal.getVendeur() == gaulois)
+					return etal;
+			}
+			return null;
 		}
 	}
 	
