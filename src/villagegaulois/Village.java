@@ -16,6 +16,12 @@ public class Village {
 	
 	private class Marche {
 		private Etal[] etals;
+		
+		public Marche(int nombreEtals) {
+			etals = new Etal[nombreEtals];
+			for (int i=0 ; i<nombreEtals ; i++)
+				etals[i] = new Etal();
+		}
 	}
 	
 	public String getNom() {
