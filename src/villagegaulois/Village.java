@@ -26,11 +26,22 @@ public class Village {
 		}
 		
 		/* Méthode permettant de trouver un étal non occupé dans le tableau etals. 
-		S'il n'y a pas d'étal disponible, la méthode retourne -1. */
+		 * S'il n'y a pas d'étal disponible, la méthode retourne -1. */
 		void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
 			if (indiceEtal>=0 && indiceEtal<etals.length && !etals[indiceEtal].isEtalOccupe())
 				etals[indiceEtal].occuperEtal(vendeur, produit, nbProduit);
 		}
+		
+		/* Méthode permettant de trouver un étal non occupé dans le tableau etals.
+		 * S'il n'y d'étal disponible, la méthode retourne -1 */
+		int trouverEtalLibre() {
+			for (int i=0 ; i<etals.length ; i++) {
+				if (!etals[i].isEtalOccupe())
+					return 1;
+			}
+			return -1;
+		}
+		
 	}
 	
 	public String getNom() {
