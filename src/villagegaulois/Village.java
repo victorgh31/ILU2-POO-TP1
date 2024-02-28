@@ -1,5 +1,8 @@
 package villagegaulois;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import personnages.Chef;
 import personnages.Gaulois;
 
@@ -42,6 +45,16 @@ public class Village {
 			return -1;
 		}
 		
+		/* Méthode qui retourne l'état sur lequel s'est installé le vendeur passé
+		 * en paramètre d'entté ou null s'il n'y en a pas. */
+		Etal [] trouverEtals(String produit) {
+			List <Etal> matchingEtals = new ArrayList<>();
+			for (Etal etal : etals) {
+				if (etal.contientProduit(produit))
+					matchingEtals.add(etal);						
+			}
+			return matchingEtals.toArray(new Etal[0]);
+		}
 	}
 	
 	public String getNom() {
