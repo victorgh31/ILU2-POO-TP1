@@ -47,7 +47,7 @@ public class Village {
 		
 		/* Méthode qui retourne l'état sur lequel s'est installé le vendeur passé
 		 * en paramètre d'entté ou null s'il n'y en a pas. */
-		Etal [] trouverEtals(String produit) {
+		public Etal [] trouverEtals(String produit) {
 			List <Etal> matchingEtals = new ArrayList<>();
 			for (Etal etal : etals) {
 				if (etal.contientProduit(produit))
@@ -64,6 +64,27 @@ public class Village {
 					return etal;
 			}
 			return null;
+		}
+		
+		/* Méthode permettant de retourner une chaîne de caractères contenant l'affichage 
+		 * de l'ensemble des étals occupés du marché. S'il reste des étals vide la chaîne 
+		 * de retour se terminera par "Il reste + nbEtalVide + étals non utilisés dans le marché.\n".
+		 */
+		public String afficherMarche() {
+			StringBuilder result = new StringBuilder();
+			int nbEtalVide = 0;
+			
+			for (Etal etal : etals) {
+				if (etal.isEtalOccupe())
+					result.append(etal.afficherEtal()).append("\n");
+				else
+					nbEtalVide++;	
+			}
+			
+			if (nbEtalVide > 0)
+				result.append("Il reste " + nbEtalVide + " étals non utilisés dans le marché.\n");
+	
+			return result.toString();
 		}
 	}
 	
