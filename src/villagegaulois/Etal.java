@@ -3,6 +3,7 @@ package villagegaulois;
 import personnages.Gaulois;
 
 public class Etal {
+	//attributs de la classe Etal
 	private Gaulois vendeur;
 	private String produit;
 	private int quantiteDebutMarche;
@@ -12,11 +13,13 @@ public class Etal {
 	public boolean isEtalOccupe() {
 		return etalOccupe;
 	}
-
+	
+	//methode getVendeur
 	public Gaulois getVendeur() {
 		return vendeur;
 	}
-
+	
+	//constructeur de la classe Etal 
 	public void occuperEtal(Gaulois vendeur, String produit, int quantite) {
 		this.vendeur = vendeur;
 		this.produit = produit;
@@ -24,7 +27,8 @@ public class Etal {
 		quantiteDebutMarche = quantite;
 		etalOccupe = true;
 	}
-
+	
+	//methode libererEtal
 	public String libererEtal() {
 		etalOccupe = false;
 		StringBuilder chaine = new StringBuilder(
@@ -38,7 +42,8 @@ public class Etal {
 		}
 		return chaine.toString();
 	}
-
+	
+	//methode afficherEtal
 	public String afficherEtal() {
 		if (etalOccupe) {
 			return "L'étal de " + vendeur.getNom() + " est garni de " + quantite
@@ -46,7 +51,8 @@ public class Etal {
 		}
 		return "L'étal est libre";
 	}
-
+	
+	//methode acheterProduit
 	public String acheterProduit(int quantiteAcheter, Gaulois acheteur) {
 		if (etalOccupe) {
 			StringBuilder chaine = new StringBuilder();
@@ -73,7 +79,8 @@ public class Etal {
 		}
 		return null;
 	}
-
+	
+	//methode contientProduit
 	public boolean contientProduit(String produit) {
 		return this.produit.equals(produit);
 	}
