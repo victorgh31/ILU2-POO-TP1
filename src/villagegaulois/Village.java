@@ -165,7 +165,7 @@ public class Village {
     }
 
     // Méthode permettant pour un vendeur de quitter le marché
-    public String partirVendeur(Gaulois vendeur) {
+    public String partirVendeur(Gaulois vendeur) throws EtalNonOccupeException {
         Etal etal = marche.trouverVendeur(vendeur);
         if (etal != null) {
             etal.libererEtal();
