@@ -14,8 +14,8 @@ public class ScenarioCasDegrade {
             System.out.println("Fin du test");
             etal.acheterProduit(-5, new Gaulois("Acheteur", 10));
             System.out.println("Fin du test");
-        } catch (EtalNonOccupeException | AcheteurNullException e) {
+        } catch (EtalNonOccupeException | AcheteurNullException | IllegalArgumentException | IllegalStateException e) {
             System.out.println("Exception attrapée : " + e.getMessage());
-        } 
+        }
     }
 }

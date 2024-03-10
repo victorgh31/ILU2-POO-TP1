@@ -63,6 +63,10 @@ public class Etal {
 				throw new AcheteurNullException("L'acheteur ne peut pas être null.");
 			}
 			
+			if (!etalOccupe) {
+	            throw new IllegalStateException("L'étal doit être occupé pour effectuer un achat.");
+	        }
+			
 			if (quantiteAcheter < 1) {
 	            throw new IllegalArgumentException("La quantité doit être positive.");
 	        }
@@ -89,13 +93,10 @@ public class Etal {
 			}
 			return chaine.toString();
 		
-		} catch (AcheteurNullException e) {
-			System.out.println("Erreur : " + e.getMessage());
-			return "";
-		} catch (IllegalArgumentException e) {
+		} catch (AcheteurNullException | IllegalArgumentException | IllegalStateException e) {
 	        System.err.println("Erreur : " + e.getMessage());
 	        return "";
-		}
+	    }
 	}
 	
 	//methode contientProduit
