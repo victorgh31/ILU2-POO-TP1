@@ -1,5 +1,6 @@
 package histoire;
 
+import villagegaulois.AcheteurNullException;
 import villagegaulois.Etal;
 import villagegaulois.EtalNonOccupeException;
 
@@ -11,6 +12,8 @@ public class ScenarioCasDegrade {
             etal.libererEtal();
             System.out.println("Fin du test");
         } catch (EtalNonOccupeException e) {
+            System.out.println("Exception attrapée : " + e.getMessage());
+        } catch (AcheteurNullException e) {
             System.out.println("Exception attrapée : " + e.getMessage());
         }
     }

@@ -57,7 +57,12 @@ public class Etal {
 	
 	//methode acheterProduit
 	public String acheterProduit(int quantiteAcheter, Gaulois acheteur) {
-		if (etalOccupe) {
+		
+		try {
+			if (acheteur == null) {
+				throw new AcheteurNullException("L'acheteur ne peut pas être null.");
+			}
+		
 			StringBuilder chaine = new StringBuilder();
 			chaine.append(acheteur.getNom() + " veut acheter " + quantiteAcheter
 					+ " " + produit + " à " + vendeur.getNom());
@@ -79,8 +84,11 @@ public class Etal {
 						+ vendeur.getNom() + "\n");
 			}
 			return chaine.toString();
+		
+		} catch (AcheteurNullException e) {
+			System.out.println("Erreur : " + e.getMessage());
+			return "";
 		}
-		return null;
 	}
 	
 	//methode contientProduit
