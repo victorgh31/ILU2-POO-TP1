@@ -62,6 +62,10 @@ public class Etal {
 			if (acheteur == null) {
 				throw new AcheteurNullException("L'acheteur ne peut pas être null.");
 			}
+			
+			if (quantiteAcheter < 1) {
+	            throw new IllegalArgumentException("La quantité doit être positive.");
+	        }
 		
 			StringBuilder chaine = new StringBuilder();
 			chaine.append(acheteur.getNom() + " veut acheter " + quantiteAcheter
@@ -88,6 +92,9 @@ public class Etal {
 		} catch (AcheteurNullException e) {
 			System.out.println("Erreur : " + e.getMessage());
 			return "";
+		} catch (IllegalArgumentException e) {
+	        System.err.println("Erreur : " + e.getMessage());
+	        return "";
 		}
 	}
 	
