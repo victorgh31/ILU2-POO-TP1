@@ -118,20 +118,24 @@ public class Village {
 		return null;
 	}
 
-	public String afficherVillageois() {
-		StringBuilder chaine = new StringBuilder();
-		if (nbVillageois < 1) {
-			chaine.append("Il n'y a encore aucun habitant au village du chef "
-					+ chef.getNom() + ".\n");
-		} else {
-			chaine.append("Au village du chef " + chef.getNom()
-					+ " vivent les légendaires gaulois :\n");
-			for (int i = 0; i < nbVillageois; i++) {
-				chaine.append("- " + villageois[i].getNom() + "\n");
-			}
-		}
-		return chaine.toString();
-	}
+	public String afficherVillageois() throws VillageSansChefException {
+        StringBuilder chaine = new StringBuilder();
+        if (nbVillageois < 1) {
+            chaine.append("Il n'y a encore aucun habitant au village");
+        } else {
+            chaine.append("Au village vivent les légendaires gaulois :\n");
+            for (int i = 0; i < nbVillageois; i++) {
+                chaine.append("- ").append(villageois[i].getNom()).append("\n");
+            }
+        }
+
+        // Vérifier s'il y a un chef dans le village, sinon lancer l'exception
+        if (chef == null) {
+            throw new VillageSansChefException("Le village n'a pas de chef !");
+        }
+
+        return chaine.toString();
+    }
 	
 	
 	// Méthode permettant d'installer un vendeur sur le marché
