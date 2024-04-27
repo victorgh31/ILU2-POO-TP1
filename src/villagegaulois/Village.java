@@ -11,6 +11,9 @@ public class Village {
 	private int nbVillageois = 0;
 
 	public Village(String nom, int nbVillageoisMaximum,int nbEtal) {
+		this.marche = new Marche(nbEtal);
+		this.nom = nom;
+		villageois = new Gaulois[nbVillageoisMaximum];
 	}
 
 	public String getNom() {
@@ -22,6 +25,10 @@ public class Village {
 	}
 
 	public void ajouterHabitant(Gaulois gaulois) {
+		if (nbVillageois < villageois.length) {
+			villageois[nbVillageois] = gaulois;
+			nbVillageois++;
+		}
 	}
 	
 	
